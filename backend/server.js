@@ -28,6 +28,7 @@ const app = express();
 
 // Allow requests only from your frontend
 const allowedOrigins = ['https://hotel-managment-system-finl-fd5j2lkjb.vercel.app'];
+app.options('*', cors()); // Handle preflight requests
 
 app.use(
   cors({
