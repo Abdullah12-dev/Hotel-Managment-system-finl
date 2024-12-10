@@ -26,8 +26,16 @@ connectDB();
 
 const app = express();
 
-// Middleware
-app.use(cors());
+// Allow requests only from your frontend
+const allowedOrigins = ['https://hotel-managment-system-finl-fd5j2lkjb.vercel.app'];
+
+app.use(
+  cors({
+    origin: allowedOrigins, // Allow specific frontend domain
+    methods: 'GET,POST,PUT,DELETE', // Allowed HTTP methods
+    credentials: true, // Allow cookies and headers like Authorization
+  })
+);
 app.use(express.json());
 
 // Admin
