@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API = axios.create({ baseURL: 'https://vercel.com/abdullahs-projects-d02196df/hotel-managment-system-h83z/5epyWKywrxeAis7YoskEqDThac3W' });
+const API = axios.create({ baseURL: process.env.REACT_APP_API_BASE_URL });
 
 // Custom error handler
 const handleApiError = (error) => {
@@ -38,7 +38,6 @@ API.interceptors.request.use((req) => {
 
 // Auth API functions
 export const login = async (formData) => {
-  console.log(process.env.REACT_APP_API_BASE_URL);
   try {
     const response = await API.post('/auth/login', formData);
     return response;
